@@ -1,0 +1,104 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstaClone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+
+
+{%include 'header.html'%}
+
+
+  <!-- Main content -->
+  <main class="container mx-auto px-4 flex justify-between mt-6">
+
+    <!-- Posts feed -->
+    <section class="w-full md:w-2/3 space-y-6">
+      <!-- Post -->
+       {% for post in posts %}
+      <div class="bg-white border rounded-lg shadow-sm">
+        <div class="flex items-center p-3">
+          <img src="{%static 'images/P Sheulder.png' %}" alt="User" class="w-10 h-10 rounded-full mr-3">
+          <span class="font-bold">{{post.author.username}}</span>
+        </div>
+        {%if post.image %}
+        <img src="{{post.image.url}}" class="w-full" alt="Post">
+        {%endif%}
+        <div class="px-4 py-2">
+          <div class="flex space-x-4 text-xl">
+            <button><i class="bi bi-heart-fill text-rose-500"></i>1.1k</button>
+            
+            <button><i class="bi bi-chat-dots"></i></button>
+            <button><i class="bi bi-share"></i></button>
+          </div>
+          <p class="mt-2 text-sm"><span class="font-bold">{{post.author.username}}</span>{{post.content}}</p>
+        </div>
+      </div>
+      {%endfor%}
+
+      
+
+
+      
+
+
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="hidden md:block w-1/3 px-4">
+      <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+        <div class="flex items-center">
+          <img src="https://i.pravatar.cc/40?img=5" class="w-10 h-10 rounded-full mr-3" />
+          <div>
+            {%if request.user.is_authenticated%}
+            <p class="font-bold">{{request.user.username}}</p>
+            {%else%}
+             <p class="font-bold">your_user_name</p>
+            {%endif%}
+            
+            <p class="text-sm text-gray-500">Sun Riser</p>
+          </div>
+        </div>
+        <button class="mt-2 text-blue-500 text-sm">Switch</button>
+      </div>
+
+      <p class="text-sm text-gray-400 mt-4">Suggestions For You</p>
+      <!-- Suggestions List -->
+      <div class="space-y-2 mt-2">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full mr-2" />
+            <p class="text-sm">cool_guy</p>
+          </div>
+          <button class="text-blue-500 text-sm">Follow</button>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full mr-2" />
+            <p class="text-sm">cool_guy</p>
+          </div>
+          <button class="text-blue-500 text-sm">Follow</button>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full mr-2" />
+            <p class="text-sm">cool_guy</p>
+          </div>
+          <button class="text-blue-500 text-sm">Follow</button>
+        </div>
+        <!-- Add more suggestions -->
+      </div>
+    </aside>
+
+  </main>
+
+</body>
+</html>
