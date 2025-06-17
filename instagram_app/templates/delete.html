@@ -8,7 +8,8 @@
 
 </head>
 <body>
-    <form action="">
+    <form action="" method="POST">
+        {% csrf_token %}
     <div class="bg-white shadow-xl p-6 mt-5 container mx-auto">
         <h1>Are you sure you want to delete this post ? </h1>
         <button type="submit" class="bg-rose-500 p-2 text-white mt-3 rounded">Delete</button>
