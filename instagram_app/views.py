@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.models import User
 
@@ -76,8 +76,6 @@ def post(request):
 
 
 
-
-
 def  update_post(request, post_id):
     updated_post = get_object_or_404(Post, id=post_id)
 
@@ -93,3 +91,12 @@ def  update_post(request, post_id):
         updated_post.save()
         return redirect('home')
     return render(request, 'update.html',{'updated_post':updated_post} )
+
+
+
+def delete_post(request, post_id):
+    delete_post = get_object_or_404(Post, id=post_id)
+    if request.method=="POST":
+        delete_post.delete()
+        return redirect('home')
+    return render(request, 'delete.html')
