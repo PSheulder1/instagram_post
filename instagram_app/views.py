@@ -73,3 +73,23 @@ def post(request):
 
 
     return render(request, 'post.html')
+
+
+
+
+
+def  update_post(request, post_id):
+    updated_post = get_object_or_404(Post, id=post_id)
+
+    if request.method=="POST":
+        content = request.POST.get('content')
+        image = request.FILES.get('image')
+
+        user = request.user
+
+        updated_post.content = content
+        if image:
+            updated_post.image = image
+        updated_post.save()
+        return redirect('home')
+    return render(request, 'update.html',{'updated_post':updated_post} )
