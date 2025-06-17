@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+ {%include 'header.html'%}
+
+<body class="bg-gray-100">
+
+ 
+<div class="flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+    <h1 class="text-center text-3xl font-bold text-pink-500 mb-6">Update  post</h1>
+
+    <span class="text-rose-500 text-center">{{error}}</span>
+
+
+    
+    <form class="space-y-4" action="" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+
+      <textarea type="text" name="content"
+       placeholder="Content" class="w-full px-4 
+      py-2 border rounded-md focus:outline-none 
+      focus:ring-2 focus:ring-pink-400" > 
+        {{updated_post.content}}
+      </textarea>
+      <input type="file" name="image" placeholder="Image" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      <button type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md">Create post</button>
+    </form>
+
+    
+
+    
+  </div>
+</div>
+
+
+
+</body>
+</html>
