@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import home, login, signup, logout_view, post, update_post
+from .views import home, login, signup, logout_view, post, update_post, delete_post
 
 
 
@@ -13,7 +13,10 @@ urlpatterns = [
 
     path('post/', post, name="post"),
 
-    path('update/<int:post_id>/', update_post, name='update')
+    path('update/<int:post_id>/', update_post, name='update'),
+
+
+    path('delete/<int:post_id>/', delete_post, name="delete")
 
 
 ]
